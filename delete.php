@@ -9,6 +9,6 @@ $stmt = $pdo->prepare("DELETE FROM categories WHERE id = :id");
 // print_r($stmt);
 $stmt->bindParam(':id', $id);
  $stmt->execute();
-header("Location: create.php");
+header("Location: index.php");
 exit();
 ?>

@@ -37,7 +37,7 @@ if (isset($_POST['updateBtn'])) {
     $stmt->bindParam(':description', $description);
     $stmt->execute();
 
-    header("Location: create.php");
+    header("Location: index.php");
     echo "update success";
     exit();
    
