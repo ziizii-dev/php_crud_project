@@ -89,7 +89,8 @@ echo "create success";
         </div>
         <div class="col mt-2">
         <h1>Categories Data Lists</h1>
-        <table border = "1" class="table table-striped table-bordered">
+
+        <table border= "1" class="table table-striped table-bordered">
         <thead>
               <tr>
                 <th>Sr</th>
@@ -117,20 +118,18 @@ echo "create success";
         //     }
         // }
         foreach ($results as $result) {
-          echo "<tr>
-              <td>{$result['id']}</td>
-               <td>{$result['name']}</td>
-               <td>{$result['description']}</td>
-             
-               <td>{$result['status']}</td>
-               <td>{$result['created_at']}</td>
-               <td>{$result['updated_at']}</td>
-              
-               <td>
-                   <a href='update.php? id={$result['id']}'>Update</a> |
-                   <a href='delete.php? id={$result['id']}'>Delete</a>
-               </td>
-              </tr>";
+          echo "<tr>";
+          echo  "<td>".$result['id']."</td>";
+          echo  "<td>".$result['name']."</td>";
+          echo  "<td>".$result['description']."</td>";
+          echo  "<td>".($result['status'] == 1 ? "active" : "inactive")."</td>";
+          echo  "<td>".$result['created_at']."</td>";
+          echo  "<td>".$result['updated_at']."</td>";
+          echo "<td>";
+          echo    "<a href='update.php? id=".$result['id']."'".">Update</a>";
+          echo    "<a href='delete.php? id=".$result['id']."'".">Delete</a>";
+          echo "</td>";
+           echo  " </tr>";
       }
         
        
