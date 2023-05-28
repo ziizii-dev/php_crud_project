@@ -36,7 +36,6 @@ if (isset($_POST['updateBtn'])) {
     $stmt->bindParam(':id', $projectId);
     $stmt->bindParam(':description', $description);
     $stmt->execute();
-
     header("Location: index.php");
     echo "update success";
     exit();

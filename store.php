@@ -10,7 +10,6 @@
           $stmt->bindParam(':status',$status);
           $stmt->execute();
            header("Location: create.php");
-          exit();
-              
+          exit();   
           };   
 ?>

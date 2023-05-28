@@ -4,7 +4,7 @@
 
 require_once("dbConnection.php");
 $id =$_GET['id'];
- echo($id);
+//  echo($id);
 $stmt = $pdo->prepare("DELETE FROM categories WHERE id = :id");
 // print_r($stmt);
 $stmt->bindParam(':id', $id);

@@ -111,15 +111,16 @@ echo "create success";
            $stmt = $pdo->query("SELECT * FROM categories");
            $stmt->execute();
            $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
-         
+      
         //    foreach ($results as &$result) {
         //     if ($result['status'] === '1') {
         //         $result['status'] = 'active';
         //     }
         // }
-        foreach ($results as $result) {
+        foreach ($results as $key=>$result) {
+          $newKey = $key+1;
           echo "<tr>";
-          echo  "<td>".$result['id']."</td>";
+          echo  "<td>"."$newKey"."</td>";
           echo  "<td>".$result['name']."</td>";
           echo  "<td>".$result['description']."</td>";
           echo  "<td>".($result['status'] == 1 ? "active" : "inactive")."</td>";
