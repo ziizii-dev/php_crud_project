@@ -1,35 +1,5 @@
 <?php 
-   require_once("dbConnection.php");
-   $name=$description="";
-   $errorName=$errorDescription="";
- if(isset($_POST['addBtn'])){ 
-
-  if( empty($_POST['name']) || empty($_POST['description'])  ){
-    $errorName = "Please Fill Name Field!";
-  }else{
-    $name = testInput($_POST['name']);
-  }
-  if(empty($_POST['name']) || empty($_POST['description']) ){
-    $errorDescription = "Please Fill Description Field!";
-  }else{
-   
-  $description = testInput($_POST['description']);
-  }
-if($name == null  && $description == null){
-      
-}else{
-  $status =testInput (($_POST['status'] == 'active') ? "1" : "0");
-  $stmt = $pdo->prepare("INSERT INTO categories (name,description,status) VALUES (:name,:description,:status)");
-  $stmt->bindParam(':name',$name);
-  $stmt->bindParam(':description',$description);
-  $stmt->bindParam(':status',$status);
-  $stmt->execute();
-echo "create success";
-}
-
-  
-  }; 
-   
+include("create.php");
 ?>
 
 <!DOCTYPE html>
@@ -40,9 +10,7 @@ echo "create success";
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css">
-
 </head>
-
 <body>
   
     <!-- <a href="read.php">List Page</a> <br> <br> -->
@@ -102,37 +70,9 @@ echo "create success";
         </thead>
         <tbody>
           
-
-           <?php
-           require_once("dbConnection.php");
-
-           $stmt = $pdo->query("SELECT * FROM categories");
-           $stmt->execute();
-           $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
-      
-        //    foreach ($results as &$result) {
-        //     if ($result['status'] === '1') {
-        //         $result['status'] = 'active';
-        //     }
-        // }
-        foreach ($results as $key=>$result) {
-          $newKey = $key+1;
-          echo "<tr>";
-          echo  "<td>"."$newKey"."</td>";
-          echo  "<td>".$result['name']."</td>";
-          echo  "<td>".$result['description']."</td>";
-          echo  "<td>".($result['status'] == 1 ? "active" : "inactive")."</td>";
-          echo  "<td>".$result['created_at']."</td>";
-          echo  "<td>".$result['updated_at']."</td>";
-          echo "<td>";
-          echo    "<a href='update.php? id=".$result['id']."'".">Update</a>";
-          echo    "<a href='delete.php? id=".$result['id']."'".">Delete</a>";
-          echo "</td>";
-           echo  " </tr>";
-      }
-        
-       
-           ?>
+            <?php 
+            include("read.php");
+            ?>
         </tbody>
     </table>
         </div>
